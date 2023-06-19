@@ -1,0 +1,12 @@
+{{ define "main" }}
+{{ if eq .Type "posts" }}{{ if not .Params.menu }}
+{{ end }}{{ end }}
+<content>
+  {{ .Content }}
+</content>
+<p>
+  {{ range (.GetTerms "tags") }}
+  <a href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+  {{ end }}
+</p>
+{{ end }}

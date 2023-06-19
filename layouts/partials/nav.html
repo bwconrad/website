@@ -1,0 +1,9 @@
+<p style="text-align: center; padding: 0px; margin: 5px;">
+<a href="{{ "" | relURL }}">Home</a>
+{{ range .Site.Menus.main }}
+<a href="{{ .URL }}">{{ .Name }}</a>
+{{ end }}
+{{ with .Site.GetPage "/posts" }}
+<a href="{{ "posts" | relURL }}">Posts</a>
+{{ end }}
+</p>

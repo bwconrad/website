@@ -1,0 +1,3 @@
+{{ range ( where .Site.RegularPages "Type" "posts" | first 5 ) }}
+  <li style="list-style-type: square; margin-left: 15px;"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+{{end}}
