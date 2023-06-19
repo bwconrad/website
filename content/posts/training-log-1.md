@@ -116,10 +116,3 @@ This while thing forced me to stop for a while, which was really frustrating sin
 At the end of the day, it was a really good long run and a perfect rebound from the past few days.
 
 This ended the week at 62k which was a large jump from last week’s 49k but definitely needed.
-
-
-
-
-
-
-
