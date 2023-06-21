@@ -1,8 +1,8 @@
 {{ if ne .Site.Params.hideFooter true }}
-<a href="/"> {{ partial "icon.html" "home" }}</a> &thinsp;
-<a href="https://github.com/bwconrad/"> {{ partial "icon.html" "github" }}</a> &thinsp;
-<a href="mailto:benwconrad@proton.me"> {{ partial "icon.html" "mail" }}</a> &thinsp;
-<a href="/index.xml"> {{ partial "icon.html" "rss-square" }}</a>
+<a href="/"> {{ partial "icon.html" (dict "name" "home" "size" "1.5rem")}}</a> &thinsp;
+<a href="https://github.com/bwconrad/"> {{ partial "icon.html" (dict "name" "github" "size" "1.25rem") }}</a> &thinsp;
+<a href="mailto:benwconrad@proton.me"> {{ partial "icon.html" (dict "name" "mail" "size" "1.35rem") }}</a> &thinsp;
+<a href="/index.xml"> {{ partial "icon.html" (dict "name" "rss-square" "size" "1.10rem") }}</a>
 <br>
 Theme based on <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
 {{ end }}

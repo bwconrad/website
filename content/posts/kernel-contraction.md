@@ -1,6 +1,7 @@
 +++
 title = "Belief Contractions on Large Ontologies with Minimal Knowledge Loss"
 date = "2019-07-05T00:00:00-00:00"
+math = true
 
 #
 # description is optional
@@ -31,19 +32,19 @@ The field of knowledge representation deals with finding efficient methods to re
 $\mathcal{EL^{++}}$ Description Logic
 -------------------------------------
 
-Description Logics (DLs) [[Baader07](#Baader07)] are a family of logics used to model relationships between entities in a domain. DLs consist of three types of entities, concepts which represent sets of individuals, roles which describe relationships between individuals and singleton individuals from a domain. A DL knowledge base is composed of two parts, the ABox containing extensional knowledge and the TBox containing intensional knowledge. The ABox states assertions about individuals using concepts and roles such as $Doctor(Betty)$ and $brotherOf(Tim, Jill)$. The TBox contains subsumption axioms that describe relationships between concepts and roles such $Dog \sqsubseteq Animal$ and $brotherOf \sqsubseteq parentOf$. Many DLs exist with varying expressibility and reasoning complexity. The language that we will be using is $\mathcal{EL^{++}}$.
+Description Logics (DL) [[Baader07](#Baader07)] are a family of logics used to model relationships between entities in a domain. DLs consist of three types of entities, concepts which represent sets of individuals, roles which describe relationships between individuals and singleton individuals from a domain. A DL knowledge base is composed of two parts, the ABox containing extensional knowledge and the TBox containing intensional knowledge. The ABox states assertions about individuals using concepts and roles such as $Doctor(Betty)$ and $brotherOf(Tim, Jill)$. The TBox contains subsumption axioms that describe relationships between concepts and roles such $Dog \sqsubseteq Animal$ and $brotherOf \sqsubseteq parentOf$. Many DLs exist with varying expressibility and reasoning complexity. The language that we will be using is $\mathcal{EL^{++}}$.
 
 $\mathcal{EL^{++}}$ [[Baader05](#Baader05)], an extension of $\mathcal{EL}$, is a lightweight DL that has limited expressibility but boasts polynomial time reasoning and is used on large ontologies like SNOMED CT. The table below outlines the syntax of the language.
 
 
 |**Name**|**Syntax**|**Semantics**|
-|---|---|---|
+|:---:|:---:|:---:|
 |top|$\top$|$\Delta^{I}$|
 |bottom | $\bot$ | $\emptyset$ |
 |nominal | {$a$} | {$a^I$} |
 |conjunction | $C \sqcap D$ | $C^I\cap$$D^I$ |
-|existential restriction | $\exists r.C$ |{$x \in \Delta^I$ $\|$$\exists$ $y \in \Delta^I$: **<br>**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $(x,y) \in$ $r^I$ $\land$ $y$ $\in$ $C^I$} 
-|concrete domain | $p(f_1, ...\; ,f_k)$ for $p \in$ $R$ |{$x \in$ $\Delta^I$ $\|$$\exists y_1, ...\; , y_k \in$ $\Delta^{D_j}$: **<br>**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $f_i^I(x) = y_i$ for $1 \le i \le k \land$ **<br>**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $(y_1, ...\; y_k)$ $\in p^{D_j}$}
+|existential restriction | $\exists r.C$ |{$x \in \Delta^I$ $\|$$\exists$ $y \in \Delta^I$:  $(x,y) \in$ $r^I$ $\land$ $y$ $\in$ $C^I$} 
+|concrete domain | $p(f_1, ... ,f_k)$ for $p \in$ $R$ |{$x \in$ $\Delta^I$ $\|$$\exists y_1, ... , y_k \in$ $\Delta^{D_j}$:  $f_i^I(x) = y_i$ <br> for $1 \le i \le k \land$  $(y_1, ... y_k)$ $\in p^{D_j}$}
 |GCI | $C \sqsubseteq D$ | $C^I \sqsubseteq D^I$ |
 |RI | $r_1 \circ ... \circ r_k \sqsubseteq r$ | $r_1^I \circ ... \circ r_k^I \sqsubseteq r^I$
 
@@ -55,11 +56,9 @@ Belief Change
 
 The most prominently used construction of belief change is the AGM framework [[Alchourron85](#Alchourron85)]. The framework models an agent’s state of knowledge with a belief set which is a closed under logical implication set of sentences. Belief sets state exactly what the agent currently perceives as true. There are three belief change operations for modifying these sets:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expansion:** Adding a new belief to a belief set.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Contraction:** Removing a belief from a belief set.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Revision:** Adding a new belief which may create an inconsistent belief set that requires other beliefs to be removed.
+- **Expansion:** Adding a new belief to a belief set.
+- **Contraction:** Removing a belief from a belief set.
+- **Revision:** Adding a new belief which may create an inconsistent belief set that requires other beliefs to be removed.
 
 The operation we will be focusing on is contraction.
 
@@ -69,15 +68,11 @@ Two methods of belief base contractions are regularly used, partial meet contrac
 
 The following five postulates [[Hansson93](#Hansson93)] are used to capture the definition of a belief base kernel contraction:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1) Success**: If $\nvdash \alpha$ then $K\div\alpha \nvdash \alpha$
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2) Inclusion**: $K\div \alpha \subseteq K$
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**3) Core retainment**: If $\beta \in K$ and $\beta \notin K\div\alpha$     then there is a set $K' \subseteq K$ such that $K' \nvdash \alpha$ but $K' \cup \beta \vdash \alpha$
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**4) Uniformity**: If for every $K' \subseteq K$ we have$K' \vdash \alpha$ iff $K' \vdash \beta$ then $K \div \alpha = K \div \beta$
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**5) Relative closure**: $K \cap Cn(K\div\alpha) \subseteq K\div \alpha$
+1. **Success**: If $\nvdash \alpha$ then $K\div\alpha \nvdash \alpha$
+2. **Inclusion**: $K\div \alpha \subseteq K$
+3. **Core retainment**: If $\beta \in K$ and $\beta \notin K\div\alpha$     then there is a set $K' \subseteq K$ such that $K' \nvdash \alpha$ but $K' \cup \beta \vdash \alpha$
+4. **Uniformity**: If for every $K' \subseteq K$ we have$K' \vdash \alpha$ iff $K' \vdash \beta$ then $K \div \alpha = K \div \beta$
+5. **Relative closure**: $K \cap Cn(K\div\alpha) \subseteq K\div \alpha$
 
 If a function satisfies the first four postulates then it is a kernel contraction and if all five hold then it is a smooth kernel
 contraction.
@@ -91,17 +86,16 @@ Since an $\mathcal{EL^{++}}$ TBox is equivalent to a belief base we can use the 
 
 The hierarchical preorder relation, $\le_{HP}$, is based off the concept of an epistemic entrenchment [[Gardenfors88](#Gardenfors88)], $\le_{EE}$. An epistemic entrenchment is a total preorder over the axioms of a belief set that represents the relative epistemic loss caused by removing each axiom. The relation $\alpha \le_{EE} \beta$ states that $\beta$ is equally or more entrenched in the knowledge base as $\alpha$ and therefore during contractions we would prefer to remove $\alpha$ over $\beta$. An epistemic entrenchment is defined by five postulates, transitivity, dominance, conjunctiveness, minimality and maximality. These postulates capture the definition of epistemic loss in standard logics however not all postulates can be applied to description logics.
 
-For the hierarchical preorder, we will form a new set of postulates to formulate a preorder that still uses the metric of epistemic loss to order the axioms but can applied on $\mathcal{EL^{++}}$ TBoxes. In $\mathcal{EL^{++}}$ we can measure epistemic loss as the number of entailments related to the most general expression that are lost. For example, in the TBox $\; T =${$A \sqsubseteq B,\; B \sqsubseteq C, \; C \sqsubseteq D$}, removing $C \sqsubseteq D$ results in losing the entailments $A \sqsubseteq D, \; B \sqsubseteq D$ and $C \sqsubseteq D$, however removing $A \sqsubseteq B$ only loses the entailment $A \sqsubseteq D$. Since removing $A \sqsubseteq B$ causes less epistemic loss we have $A \sqsubseteq B \le_{HP} C \sqsubseteq D$.
+For the hierarchical preorder, we will form a new set of postulates to formulate a preorder that still uses the metric of epistemic loss to order the axioms but can applied on $\mathcal{EL^{++}}$ TBoxes. In $\mathcal{EL^{++}}$ we can measure epistemic loss as the number of entailments related to the most general expression that are lost. For example, in the TBox $ T =${$A \sqsubseteq B, B \sqsubseteq C,  C \sqsubseteq D$}, removing $C \sqsubseteq D$ results in losing the entailments $A \sqsubseteq D,  B \sqsubseteq D$ and $C \sqsubseteq D$, however removing $A \sqsubseteq B$ only loses the entailment $A \sqsubseteq D$. Since removing $A \sqsubseteq B$ causes less epistemic loss we have $A \sqsubseteq B \le_{HP} C \sqsubseteq D$.
 
 Before we formulate the postulates we need to first define some terminology that will help us describe the subsumption hierarchy of $\mathcal{EL^{++}}$ axioms.
 
 ### Def 1 Connected Axioms:
 
-For some TBox $T$ and axioms {$A\sqsubseteq B,\; C\sqsubseteq D$} $\in T$, where $A,B,C,D$ are either all concepts, existential restrictions and conjunctions (GCI) or all roles (RI). If either:
+For some TBox $T$ and axioms {$A\sqsubseteq B, C\sqsubseteq D$} $\in T$, where $A,B,C,D$ are either all concepts, existential restrictions and conjunctions (GCI) or all roles (RI). If either:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ {$A\sqsubseteq B, \; C\sqsubseteq D$}$ \models A\sqsubseteq D$
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ {$A\sqsubseteq B, \; C\sqsubseteq D, \;\mathcal{S}$}$ \models A\sqsubseteq D$, where $\mathcal{S} \subseteq T$ are *support axioms*, and no subset of {$A\sqsubseteq B,\; C\sqsubseteq D, \;\mathcal{S}$} entails $A\sqsubseteq D$
+- {$A\sqsubseteq B,  C\sqsubseteq D$}$ \models A\sqsubseteq D$
+- {$A\sqsubseteq B,  C\sqsubseteq D, \mathcal{S}$}$ \models A\sqsubseteq D$, where $\mathcal{S} \subseteq T$ are *support axioms*, and no subset of {$A\sqsubseteq B, C\sqsubseteq D, \mathcal{S}$} entails $A\sqsubseteq D$
 
 then $A\sqsubseteq B$ is connected with $C\sqsubseteq D$, $A\sqsubseteq B  \mapsto C\sqsubseteq D$. We refer to $A\sqsubseteq B$ as a $\textit{LHS connecting axiom}$ of $C\sqsubseteq D$ and $C\sqsubseteq D$ as a $\textit{RHS connecting axiom}$ of $A\sqsubseteq B$.
 
@@ -109,22 +103,17 @@ then $A\sqsubseteq B$ is connected with $C\sqsubseteq D$, $A\sqsubseteq B  \maps
 
 For some TBox $T$, axioms $\alpha$ and $\beta$ are on the same $\textit{subsumption path}$ if there exists a sequence of axioms {$x_1, x_2, … , x_n$}$\in T$ for $n\geq1$, where both:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$$x_i \mapsto x_{i+1}$ for all $1 \leq i \leq n-1$.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$$x_1 = \alpha$ and $x_n = \beta$.
+- $x_i \mapsto x_{i+1}$ for all $1 \leq i \leq n-1$.
+- $x_1 = \alpha$ and $x_n = \beta$.
 
 {$x_1, x_2, … , x_n$} is a $\textit{subsumption path}$ of $\alpha$ and $\beta$.
 
 We now define the four postulates that we will be following while constructing the hierarchical preorder:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) **Transitivity:** If $\alpha\le_{HP}\beta$ and     $\beta \le_{HP}\delta$, then $\alpha \le_{HP}\delta$.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) **Totality:** For all $\alpha, \beta$, $\alpha \le_{HP} \beta$ or     $\beta \le_{HP} \alpha$.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3) **Minimality:** If belief base $T$ is consistent, then     $\alpha\notin T$ iff $\alpha \le_{HP}\beta$ for all $\beta$.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4) **Hierarchical:** If $\alpha \mapsto \beta$ and {$\alpha, \beta$}$ \in T$ for some belief base $T$, then
-    $\alpha \le_{HP}\beta$.
+1. **Transitivity:** If $\alpha\le_{HP}\beta$ and     $\beta \le_{HP}\delta$, then $\alpha \le_{HP}\delta$.
+2. **Totality:** For all $\alpha, \beta$, $\alpha \le_{HP} \beta$ or     $\beta \le_{HP} \alpha$.
+3. **Minimality:** If belief base $T$ is consistent, then     $\alpha\notin T$ iff $\alpha \le_{HP}\beta$ for all $\beta$.
+4. **Hierarchical:** If $\alpha \mapsto \beta$ and {$\alpha, \beta$}$ \in T$ for some belief base $T$, then $\alpha \le_{HP}\beta$.
 
 Transitivity and totality are the two properties a total preorder must follow. The hierarchical postulate is a new postulate that captures the connection between subsumption hierarchies and epistemic loss in description logics. For example, if we have $\alpha \mapsto \beta$ then$\beta$ is higher in the subsumption hierarchy than $\alpha$ which means removing it will cause more entailments to be lost from the TBox, therefore $\beta$ causes more epistemic loss than $\alpha$.
 
@@ -144,23 +133,20 @@ The initial phase weighs $\alpha$ based off its placement within the TBox’s su
 
 Given $A$ is a concept, existential restriction or a conjunction of concepts and existential restrictions, $B$ and $C$ are concepts and $r$ and $s$ are roles:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If {$\exists r.C \sqsubseteq A, \;B\sqsubseteq C$} $\in T$, then $children'(\exists r.C) = children(\exists r.C)\cup${$\exists r.B$}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If {$\exists r.C \sqsubseteq A, \;s\sqsubseteq r$} $\in T$, then $children'(\exists r.C) = children(\exists r.C) \cup ${$\exists s.C$}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If {$\exists r.C \sqsubseteq A, \;B\sqsubseteq C,\; s\sqsubseteq r$} $\in T$, then $children'(\exists r.C) = children(\exists r.C) \cup$ {$\exists r.B,\; \exists s.C,\; \exists s.B$}
+-  If {$\exists r.C \sqsubseteq A, B\sqsubseteq C$} $\in T$, then $children'(\exists r.C) = children(\exists r.C)\cup${$\exists r.B$}
+-  If {$\exists r.C \sqsubseteq A, s\sqsubseteq r$} $\in T$, then $children'(\exists r.C) = children(\exists r.C) \cup ${$\exists s.C$}
+-  If {$\exists r.C \sqsubseteq A, B\sqsubseteq C, s\sqsubseteq r$} $\in T$, then $children'(\exists r.C) = children(\exists r.C)\\; \cup $ {$\exists r.B, \exists s.C, \exists s.B$}
 
 We can use these indirect children to find all LHS connecting axioms for each axiom by using the rule:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$$A\sqsubseteq B \in LHS(C\sqsubseteq D)$ if $B = C$ or $B \in children'(C)$
+- $A\sqsubseteq B \in LHS(C\sqsubseteq D)$ if $B = C$ or $B \in children'(C)$
 
 The subsumption hierarchy weighting procedure can now be executed as follows:
 
 **Subsumption Hierarchy Weighting Procedure:**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If $LHS(\alpha) = \emptyset$ then $weight(\alpha)=0$.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If $LHS(\alpha) \ne \emptyset$ then $weight(\alpha) = i+1$ where $i$ is the maximum subsumption hierarchy weight among all axioms in $LHS(\alpha)$.
+- If $LHS(\alpha) = \emptyset$ then $weight(\alpha)=0$.
+- If $LHS(\alpha) \ne \emptyset$ then $weight(\alpha) = i+1$ where $i$ is the maximum subsumption hierarchy weight among all axioms in $LHS(\alpha)$.
 
 Since cycles are allowed to occur in the TBox we have an anti-cycling check for the recursive step in the above procedure. While keeping a list of all previously visited axioms in the current recursive stack, if we try to get $weight(\beta)$ and $\beta$ is already in the visited axiom list we do not consider its weight at the current recursion level.
 
@@ -169,32 +155,37 @@ An example of the subsumption hierarchy weightings procedure is shown in the fol
 ### Example 1:
 
 ##### TBox:
-
-<p style="text-align: center;">
-  $A \sqsubseteq B $  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $B \sqsubseteq C$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $C \sqsubseteq \exists r.D$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\exists p.E  \sqsubseteq F$ <br> $A \sqsubseteq \exists p.E$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $D \sqsubseteq E$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$r \sqsubseteq s$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $s \sqsubseteq p$
-</p>
+|   |   |   |   |
+|:---:|:---:|:---:|:---:|
+| $A \sqsubseteq B $ | $B \sqsubseteq C$ | $C \sqsubseteq \exists r.D$ | $\exists p.E  \sqsubseteq F$ |
+| $A \sqsubseteq \exists p.E$ | $D \sqsubseteq E$ | $r \sqsubseteq s$ | $s \sqsubseteq p$ |
 
 ##### LHS Connecting Axioms:
 
-<p style="text-align: center;">
-  $LHS(A \sqsubseteq B)=$ {% raw %}{}{% endraw %} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $LHS(B \sqsubseteq C)=${$A \sqsubseteq B$}<br>  $LHS(C \sqsubseteq \exists r.D)=${$B \sqsubseteq C$}   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $LHS(\exists p.E  \sqsubseteq F)=${$C \sqsubseteq \exists r.D, A \sqsubseteq \exists p.E$} <br> $LHS(A \sqsubseteq \exists p.E) =${} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $LHS(D \sqsubseteq E)=${} <br> $LHS(r \sqsubseteq s)=${} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $LHS(s \sqsubseteq p)=${$r \sqsubseteq s$}
-</p>
+|   |   |
+|:---:|:---:|
+| $LHS(A \sqsubseteq B)= \\{\\} $ | $LHS(B \sqsubseteq C)=\\{A \sqsubseteq B \\}$
+| $LHS(C \sqsubseteq \exists r.D)=\\{B \sqsubseteq C\\}$ | $LHS(\exists p.E  \sqsubseteq F)=\\{C \sqsubseteq \exists r.D, A \sqsubseteq \exists p.E\\}$ |
+| $LHS(A \sqsubseteq \exists p.E) =\\{\\}$ | $LHS(D \sqsubseteq E)=\\{\\}$ |
+| $LHS(r \sqsubseteq s)=\\{\\} $ | $LHS(s \sqsubseteq p)=\\{r \sqsubseteq s\\}$ |
 
 ##### Weights:
 
-<p style="text-align: center;">
-  $weight(A \sqsubseteq B)=0$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(B \sqsubseteq C)=1$ <br> $weight(C \sqsubseteq \exists r.D)=2$  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(\exists p.E  \sqsubseteq F)=3$ <br> $weight(A \sqsubseteq \exists p.E)=0$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(D \sqsubseteq E)=0$ <br> $weight(r \sqsubseteq s)=0$  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(s \sqsubseteq p)=1$ 
-</p>
+|   |   |
+|:---:|:---:|
+| $weight(A \sqsubseteq B)=0$ | $weight(B \sqsubseteq C)=1$ |
+| $weight(C \sqsubseteq \exists r.D)=2$ | $weight(\exists p.E  \sqsubseteq F)=3$ |
+| $weight(A \sqsubseteq \exists p.E)=0$ | $weight(D \sqsubseteq E)=0$ |
+| $weight(r \sqsubseteq s)=0$ | $weight(s \sqsubseteq p)=1$ |
 
 ## Support Axiom Phase
 
-An issue with subsumption hierarchy weights is that support axioms are under-weighted. If we consider Example 1, we have $C \sqsubseteq \exists r.D \mapsto \exists p.E  \sqsubseteq F$ because of the support axioms $S =${$r \sqsubseteq s,\; s \sqsubseteq p,\; D \sqsubseteq E$}. With the axioms of S we have $T \models  C \sqsubseteq F$ however if we remove any of these axioms this would not hold. When we perform a contraction of $A \sqsubseteq E$ on TBox T we get 2 kernels:
+An issue with subsumption hierarchy weights is that support axioms are under-weighted. If we consider Example 1, we have $C \sqsubseteq \exists r.D \mapsto \exists p.E  \sqsubseteq F$ because of the support axioms $S =${$r \sqsubseteq s, s \sqsubseteq p, D \sqsubseteq E$}. With the axioms of S we have $T \models  C \sqsubseteq F$ however if we remove any of these axioms this would not hold. When we perform a contraction of $A \sqsubseteq E$ on TBox T we get 2 kernels:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) $K_1 =$ {$A \sqsubseteq B,\; B \sqsubseteq C,\;  C \sqsubseteq \exists r.D,\; \exists p.E  \sqsubseteq F,\; D \sqsubseteq E,\; r \sqsubseteq s,\; s \sqsubseteq p$}
+1. $K_1 =$ {$A \sqsubseteq B, B \sqsubseteq C,  C \sqsubseteq \exists r.D, \exists p.E  \sqsubseteq F, D \sqsubseteq E, r \sqsubseteq s, s \sqsubseteq p$}
+2. $K_2 = ${$A \sqsubseteq \exists p.E, \exists p.E  \sqsubseteq F$}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) $K_2 = ${$A \sqsubseteq \exists p.E,\; \exists p.E  \sqsubseteq F$}
-
-Removing the lowest weighted axiom in $K_2$ we simply choose $A \sqsubseteq \exists p.E$, however $K_1$ has 3 axioms with a weight of 0 to choose from, $A \sqsubseteq B,\; r \sqsubseteq s$, and $D \sqsubseteq E$. The issue is removing $A \sqsubseteq B$ preserves $T \models C \sqsubseteq F$, while removing either $r \sqsubseteq s$ or $D \sqsubseteq E$ does not because its causes  $C \sqsubseteq \exists r.D \mapsto\mkern-16mu\not\;\;  \exists p.E  \sqsubseteq F$. Since removing these two axioms causes a greater amount epistemic loss to the TBox we need to adjust their weights to reflect this.
+Removing the lowest weighted axiom in $K_2$ we simply choose $A \sqsubseteq \exists p.E$, however $K_1$ has 3 axioms with a weight of 0 to choose from, $A \sqsubseteq B, r \sqsubseteq s$, and $D \sqsubseteq E$. The issue is removing $A \sqsubseteq B$ preserves $T \models C \sqsubseteq F$, while removing either $r \sqsubseteq s$ or $D \sqsubseteq E$ does not because its causes  $C \sqsubseteq \exists r.D \mapsto\mkern-16mu\not  \exists p.E  \sqsubseteq F$. Since removing these two axioms causes a greater amount epistemic loss to the TBox we need to adjust their weights to reflect this.
 
 The support axiom weighting phase makes adjustments by matching the support axioms’ sub-concept/role with axioms that have existential restrictions with the same concept/role in their super-concept.
 
@@ -202,13 +193,11 @@ The support axiom weighting phase makes adjustments by matching the support axio
 
 Given $A,B$ are concepts and $r,s$ are roles:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ For axioms in the form $A \sqsubseteq B$ with $weight(A \sqsubseteq B) = i$:
+- For axioms in the form $A \sqsubseteq B$ with $weight(A \sqsubseteq B) = i$:
+    - If $X \sqsubseteq \exists r.A \in T$ with $weight(X \sqsubseteq \exists r.A) = j$ and $j \ge i$, then $weight(A \sqsubseteq B) = j$.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If $X \sqsubseteq \exists r.A \in T$ with $weight(X \sqsubseteq \exists r.A) = j$ and $j \ge i$, then $weight(A \sqsubseteq B) = j$.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ For axioms in the form $r \sqsubseteq s$ with $weight(r \sqsubseteq s) = i$:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If $X \sqsubseteq \exists r.A \in T$ with $weight(X \sqsubseteq \exists r.A) = j$ and $j \ge i$, then $weight(r \sqsubseteq s) = j$.
+- For axioms in the form $r \sqsubseteq s$ with $weight(r \sqsubseteq s) = i$:
+    - If $X \sqsubseteq \exists r.A \in T$ with $weight(X \sqsubseteq \exists r.A) = j$ and $j \ge i$, then $weight(r \sqsubseteq s) = j$.
 
 Continuing with Example 1, applying the support axiom weighting procedure results in the following:
 
@@ -216,40 +205,44 @@ Continuing with Example 1, applying the support axiom weighting procedure result
 
 ##### Support Axiom Adjustments:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ Since {$C \sqsubseteq \exists r.D ,\; r \sqsubseteq s$} $\in T$, $weight(C \sqsubseteq \exists r.D) = 2$ and $weight(r \sqsubseteq s) = 0$, set $weight(r \sqsubseteq s) = 2$.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ Since {$C \sqsubseteq \exists r.D ,\; D \sqsubseteq E$} $\in T$, $weight(C \sqsubseteq \exists r.D) = 2$ and $weight(D \sqsubseteq E) = 0$, set $weight(D \sqsubseteq E) = 2$.
+- Since {$C \sqsubseteq \exists r.D , r \sqsubseteq s$} $\in T$, $weight(C \sqsubseteq \exists r.D) = 2$ and $weight(r \sqsubseteq s) = 0$, set $weight(r \sqsubseteq s) = 2$.
+- Since {$C \sqsubseteq \exists r.D , D \sqsubseteq E$} $\in T$, $weight(C \sqsubseteq \exists r.D) = 2$ and $weight(D \sqsubseteq E) = 0$, set $weight(D \sqsubseteq E) = 2$.
 
 ##### Weights:
 
-<p style="text-align: center;">
-  $weight(A \sqsubseteq B)=0$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(B \sqsubseteq C)=1$ <br> $weight(C \sqsubseteq \exists r.D)=2$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(\exists p.E  \sqsubseteq F)=3$ <br> $weight(A \sqsubseteq \exists p.E)=0$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(D \sqsubseteq E)=2$ <br> $weight(r \sqsubseteq s)=2$  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(s \sqsubseteq p)=1$ 
-</p>
+
+|   |   |
+|:---:|:---:|
+| $weight(A \sqsubseteq B)=0$ | $weight(B \sqsubseteq C)=1$ |
+| $weight(C \sqsubseteq \exists r.D)=2$ | $weight(\exists p.E  \sqsubseteq F)=3$ |
+| $weight(A \sqsubseteq \exists p.E)=0$ | $weight(D \sqsubseteq E)=2$ |
+| $weight(r \sqsubseteq s)=2$ | $weight(s \sqsubseteq p)=1$ |
 
 ## Cycle Adjustment Phase:
 
 Next is an optional phase to deal with cyclic TBoxes. Say we have the TBox: 
 
-<p style="text-align: center;">
-	$A \sqsubseteq B$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $B \sqsubseteq C$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $C \sqsubseteq A$
-</p>
+| | | |
+|:-:|:-:|:-:|
+|$A \sqsubseteq B$ | $B \sqsubseteq C$ |$C \sqsubseteq A$ |
 
 The weights assigned in the subsumption hierarchy phase varies depending on the order the axioms are processed. For example, if we start with $B \sqsubseteq C$ we would gets the weights: 
 
-<p style="text-align: center;">
-	$weight(A \sqsubseteq B) = 1$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(B \sqsubseteq C) = 2$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(C \sqsubseteq A) = 0$ 
-</p>
+| | | |
+|:-:|:-:|:-:|
+|$weight(A \sqsubseteq B) = 1$ | $weight(B \sqsubseteq C) = 2$ |$weight(C \sqsubseteq A) = 0$ |
 
 The anti-cycling check prevents the procedure from entering an infinite loop however the hierarchical postulate is broken because $weight(B \sqsubseteq C) >  weight(C \sqsubseteq A)$. Another problem is that the current weights state that removing $C \sqsubseteq A$ causes the least amount of epistemic loss however all of the axioms in the loop cause the same amount of loss. To fix both these issues, the cycle adjustment procedure identifies loops and increases all of the loop’s axioms to the maximum weight among these axioms.
 
 **Cycle Adjustment Procedure:**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If $\alpha$ is in a cycle comprised of the set of axioms $\ell \subseteq T$, then $weight(\beta) = i$ where $i = max(weight(\beta))$ for all $\beta \in \ell$.
+- If $\alpha$ is in a cycle comprised of the set of axioms $\ell \subseteq T$, then $weight(\beta) = i$ where $i = max(weight(\beta))$ for all $\beta \in \ell$.
 
 Applying this procedure on the above TBox gives us the weights:
-<p style="text-align: center;">
-  $weight(A \sqsubseteq B) = 2$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(B \sqsubseteq C) = 2$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(C \sqsubseteq A) = 2$ 
-</p>
+
+| | | |
+|:-:|:-:|:-:|
+|$weight(A \sqsubseteq B) = 2$ | $weight(B \sqsubseteq C) = 2$ |$weight(C \sqsubseteq A) = 2$ |
 
 ## Offset Adjustment Phase
 
@@ -257,17 +250,12 @@ The support axiom phase adjusts support axioms’ weights to better reflect thei
 
 **Offset Adjustment Procedure:**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If $LHS(\alpha) = \emptyset$:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ $o_{\alpha} = 0$
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ Else, For all $\beta \in LHS(\alpha)$:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If $weight(\beta) > weight(\alpha)$, then $o_{\alpha} = o_{\beta} + weight(\beta) - weight(\alpha) +1$
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ Else, $o_{\alpha} = o_{\beta}$
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ $weight(\alpha) = weight(\alpha) + o_{\alpha}$
+- If $LHS(\alpha) = \emptyset$:
+    - $o_{\alpha} = 0$
+- Else, For all $\beta \in LHS(\alpha)$:
+    - If $weight(\beta) > weight(\alpha)$, then $o_{\alpha} = o_{\beta} + weight(\beta) - weight(\alpha) +1$
+    - Else, $o_{\alpha} = o_{\beta}$
+- $weight(\alpha) = weight(\alpha) + o_{\alpha}$
 
 Like the subsumption hierarchy weighting procedure, the offset adjustment procedure also contains the same anti-cycling check during the recursive step of calculating $o_{\beta}$ to prevent infinite loops.
 
@@ -277,25 +265,29 @@ Finishing Example 1, we go through the offset adjustment phase and get the follo
 
 ##### Offset Adjustments:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ Since $weight(r \sqsubseteq s) > weight(s \sqsubseteq p )$:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- $o_{s \sqsubseteq p} = o_{r \sqsubseteq s} + weight(r \sqsubseteq s) - weight(s \sqsubseteq p) +1 = 0 + 2 - 1 + 1 = 2$<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- $weight(s \sqsubseteq p) = 1 + 2 = 3$.
+- Since $weight(r \sqsubseteq s) > weight(s \sqsubseteq p )$:
+    - $o_{s \sqsubseteq p} = o_{r \sqsubseteq s} + weight(r \sqsubseteq s) - weight(s \sqsubseteq p) +1 = 0 + 2 - 1 + 1 = 2$
+    - $weight(s \sqsubseteq p) = 1 + 2 = 3$.
 
 ##### Weights:
 
-<p style="text-align: center;">
-  $weight(A \sqsubseteq B)=0$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(B \sqsubseteq C)=1$ <br> $weight(C \sqsubseteq \exists r.D)=2$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(\exists p.E  \sqsubseteq F)=3$ <br> $weight(A \sqsubseteq \exists p.E)=0$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(D \sqsubseteq E)=2$ <br> $weight(r \sqsubseteq s)=2$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(s \sqsubseteq p)=3$ 
-</p>
+|   |   |
+|:---:|:---:|
+| $weight(A \sqsubseteq B)=0$ | $weight(B \sqsubseteq C)=1$ |
+| $weight(C \sqsubseteq \exists r.D)=2$ | $weight(\exists p.E  \sqsubseteq F)=3$ |
+| $weight(A \sqsubseteq \exists p.E)=0$ | $weight(D \sqsubseteq E)=2$ |
+| $weight(r \sqsubseteq s)=2$ | $weight(s \sqsubseteq p)=3$ |
 
 Using Hierarchical Weighting Function in $\le_{HP}$
 ---------------------------------------------------
 
 With the hierarchical weighting function we can now implement $\le_{HP}$ to solve hierarchical preorder relations using the following rule:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\alpha \le_{HP} \beta$ iff $weight(\alpha) \le weight(\beta)$
+- $\alpha \le_{HP} \beta$ iff $weight(\alpha) \le weight(\beta)$
 
 Algorithm 1 outlines the relation validity checking and weight calculation processes. Here we are assuming that the TBox T stores pairs of axioms and their weights.
 
-![Algorithm 1](/assets/alg1.png)
-
+<div style="text-align:center"><img src="/images/posts/research/kernel-contraction/alg1.webp"></div>
 
 Postulate Proofs
 ----------------
@@ -317,15 +309,31 @@ Therefore for all $\alpha, \beta$, we have $\alpha \le_{HP} \beta$ or $\beta \le
 
 **Hierarchical:** Assume $\alpha \mapsto \beta$ and $\{\alpha,\beta\} \in T$. To check if $\alpha \le_{HP}\beta$ we begin by getting $weight(\alpha)$ and $weight(\beta)$. At the start of offset adjustment phase we have $weight(\alpha) = i$ and $weight(\beta) = j$ where $i,j \ge 0$. During the phase, offsets for $\alpha$ and $\beta$, $o_{\alpha}$ and $o_{\beta}$, are calculated and added to each of the axioms’ weights. Depending on the values of $i$ and $j$, $o_{\beta}$ has the value:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If $i>j$ then $o_{\beta} = o_{\alpha}+i-j+1$
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $\bullet$ If i $\le$ j then $o_{\beta} = o_{\alpha}$
+- If $i>j$ then $o_{\beta} = o_{\alpha}+i-j+1$
+- If i $\le$ j then $o_{\beta} = o_{\alpha}$
 
 Applying these offsets, we get:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If $i>J$: <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(\alpha) = i + o_{\alpha}$ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(\beta) = j + o_{\beta}$ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$= j + o_{\alpha} +i - j + 1 $ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $= i + o_{\alpha} +1$ 
+- If $i>J$: 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If $i \le j$: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(\alpha) = i + o_{\alpha}$ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $weight(\beta) = i + o_{\beta}$ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $= i + o_{\alpha}$
+$$
+\begin{aligned}
+weight(\alpha) &= i + o_{\alpha} \\\\
+weight(\beta) &= j + o_{\beta} \\\\
+&= j + o_{\alpha} +i - j + 1 \\\\
+&= i + o_{\alpha} +1
+\end{aligned}
+$$
+
+- If $i \le j$: 
+
+$$
+\begin{aligned}
+weight(\alpha) &= i + o_{\alpha} \\\\
+weight(\beta) &= j + o_{\beta} \\\\
+&= i + o_{\alpha}
+\end{aligned}
+$$
 
 Therefore the hierarchical weighting function always terminates with $weight(\alpha) \le weight(\beta)$ and thus always returns $\alpha \le_{HP} \beta$ whenever $\alpha \mapsto \beta$ and $\{\alpha, \beta\} \in T$.
 
@@ -336,13 +344,13 @@ Kernel Contraction with Hierarchical Preorder
 
 Returning to the problem of selecting which hitting set to remove in the kernel contraction algorithm, we can extend the definition of $\le_{HP}$ to create a new total preorder relation that works with sets of axioms, $\le_{HPS}$. The relation $H_1 \le_{HPS} H_2$ where $H_1,H_2 \subseteq T$ states removing $H_2$ causes an equal or greater amount of epistemic lost as removing $H_1$. For set weights can say $weight(H_1) = sum(weight(\alpha))$ for all axioms $\alpha \in H_1$. To validate $\le_{HPS}$ relations we use the rule:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $H_1 \le_{HPS} H_2$ if $weight(H_1) < weight(H_2) $ where $H_1, H_2 \subseteq T$
+- $H_1 \le_{HPS} H_2$ if $weight(H_1) < weight(H_2) $ where $H_1, H_2 \subseteq T$
 
 In order for the kernel contraction algorithm to be smooth, we must ensure that the same drop set is chosen every time we repeat a contraction. Therefore we assume that a canonical ordering of the axioms exists which can be used in tiebreakers where multiple axioms have the same minimum weight.
 
 When choosing which hitting set to remove, all of the hitting sets are ordered with $\le_{HPS}$ and then the set that is at the bottom of the preorder is selected as the drop set. Algorithm 2 outlines the kernel contraction algorithm $T\div\alpha$ using $\le_{HPS}$.
 
-![Algorithm 2](/assets/alg2.png)
+<div style="text-align:center"><img src="/images/posts/research/kernel-contraction/alg2.webp"></div>
 
 Smooth Kernel Contraction Proof
 -------------------------------
@@ -419,3 +427,4 @@ and Co., New York.
 669.
 
 <a name='Hansson94'></a>[Hansson94] Hansson, S. O. (1994). Kernel contraction. 59(3):845–859.
+
