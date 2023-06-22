@@ -2,15 +2,7 @@
 title = "Belief Contractions on Large Ontologies with Minimal Knowledge Loss"
 date = "2019-07-05T00:00:00-00:00"
 math = true
-
-#
-# description is optional
-#
 # description = "An optional description for SEO. If not provided, an automatically created summary will be used."
-
-#
-# tags are optional
-#
 tags = ["research",]
 +++
 

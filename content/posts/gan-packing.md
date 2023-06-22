@@ -1,15 +1,8 @@
 +++
 title = "An Empirical Analysis Packing Discriminators in Generative Adversarial Networks"
 date = "2019-07-19T00:00:00-00:00"
-
-#
-# description is optional
-#
+math=true
 # description = "An optional description for SEO. If not provided, an automatically created summary will be used."
-
-#
-# tags are optional
-#
 tags = ["research",]
 +++
 

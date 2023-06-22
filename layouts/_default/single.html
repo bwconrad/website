@@ -10,9 +10,9 @@
 <p style="text-align: none;">
     {{ with .NextInSection }}
     <a href="{{ .Permalink }}"> {{ partial "icon.html" (dict "name" "arrow-circle-right-solid" "size" "0.95rem")}} Next - {{ .Title | truncate 30 }}</a>
+    <br>
     {{ end }}
     {{ with .PrevInSection }}
-    <br>
     <a href="{{ .Permalink }}"> {{ partial "icon.html" (dict "name" "arrow-circle-left-solid" "size" "0.95rem")}} Prev - {{ .Title | truncate 80 }}</a>
     {{ end }}
 </p>

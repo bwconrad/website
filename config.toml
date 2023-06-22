@@ -1,14 +1,12 @@
 # Base URL used when generating links to your pages
-# Set to the URL for your site
 baseURL = "https://bwconrad.com"
 
-# The name of this wonderful theme ;-).
 theme = 'hugo-bearblog'
 
-# Basic metadata configuration for your blog.
+# Basic metadata configuration 
 title = "Ben's Place"
 author = "Ben Conrad"
-copyright = "Copyright © 2023, Ben Conrad."
+copyright = "Copyright © 2019-2023, Benjamin Conrad."
 languageCode = "en-US"
 
 # Generate a nice robots.txt for SEO
@@ -23,7 +21,7 @@ ignoreErrors = ["error-disable-taxonomy"]
 
 [params]
   # The "description" of your website. This is used in the meta data of your generated html.
-  description = "Personal blog and site for Ben Conrad. Content about running, machine learning and everything else."
+  description = "Personal blog and website for Ben Conrad. Content about running, machine learning and everything else."
 
   # The path to your "favicon". This should be a square (at least 32px x 32px) png-file.
   # Hint: It's good practise to also put a "favicon.ico"-file into your "static"-folder.
