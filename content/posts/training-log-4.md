@@ -16,8 +16,7 @@ tags = ["training",]
 
 # Training Log Entry 4: June 19-25, 2023
 
-This will be hopeful be the last week of a short 3 week transition back into my regular training schedule.
-After bring back 1 workout last week, the goal for this week is to return my regular schedule of 2 workouts on Wednesday and Friday while keeping the mileage in the low 60s.
+After last week's failed attempt at returning to my regular training schedule, this week's plan to once again aim for 2 workouts on Wednesday and Friday and have the mileage in the low 60s.
 
 ## Monday June 19
 
@@ -68,6 +67,49 @@ While on this run, I came across someone leveling the trail.
 The sections that they did made the trail really soft so I hope they either flatten it or that it will firm up on its own quickly.
 
 ## Friday June 23
+
+<div style="text-align:center"><img src="/images/posts/training/2023/4/4.png.webp" /></div>
+
+Did a vertical workout this day which has become my typical Friday workout over the past few months.
+The most unique aspect of ultra/mountain races compared to track and road running is how much the elevation gains plays into your approach to a race.
+My goal is to limit the amount of time I ever have to power hike during races therefore I have started to make continuous uphill runs a staple in my training.
+
+Around where I currently live, there are zero mountains or very long uphill roads so the best place I have found to do these workouts is a mountain biking trail at the MARC.
+This route is about 800m long with a bit over 50m of elevation gain.
+The terrain is very technical with lots of roots, large rocks and small drop-offs for the mountain bikers.
+The grade also changes frequently but is only flat for some very short segments.
+Below is a picture of the trail.
+
+<div style="text-align:center"><img src="/images/gallery/2023/9.jpg.webp" height="700"></div>
+
+There are no paces in the workout, just a target number of reps and the goal of limiting the number of breaks at the top.
+This day I did 4 uphill reps.
+Felt decent during the workout.
+My breathing wasn't an issue but my legs were definitely not use to the climbing after a few weeks of not doing this workout.
+I did the first two reps continuously and then took about a 1 minute break after the 2nd and 3rd reps.
+
+This wasn't the best workout to be doing with how my calf has been feeling lately.
+I took the downhills very slow which made them be close to the same pace as my uphills.
+However, for me, going that slow makes the recovery not as effective since I am breaking my stride while going down.
+This also caused my knees to be a sore which I noticed late in the workout.
+
+Overall with the warm-up and cool-down it came to 11.3km with 250m of climbing for the day.
+
+<div style="text-align:center"><img src="/images/gallery/2023/8.jpg.webp"></div>
+
+## Saturday June 24
+
+<div style="text-align:center"><img src="/images/posts/training/2023/4/5.png.webp" /></div>
+
+My legs were completely fried after the hill workout.
+Just did a very short and slow 4km shake-out to get ready for Sunday's long run.
+My both my knees didn't feel too good but after the run they feel a bit better.
+
+## Sunday June 25
+
+
+
+
 
 
 

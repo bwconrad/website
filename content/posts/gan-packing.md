@@ -14,7 +14,7 @@ td {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
+  width: 80%; 
 }
 </style>
 
@@ -34,8 +34,8 @@ Mode collapse is a phenomenon in GANs where the generator produces samples that 
 An example of mode collapse happens while training on the MNIST dataset which has the 10 digits
 (0-9) as its modes. Using a standard GAN architecture, the model often fails to generate all of the digits, only discovering a few of the distribution's modes no matter how long the network trains. 
 
-<div style="text-align:center"><img src="/assets/mnist_collapse.PNG" /></div>
-<p align="center" style="font-size:15px" markdown="1"> <b>Figure 0: A GAN encountering mode collapse (bottom) vs one that is not (top) [[Cho18](#Cho18)]</b></p>
+<div style="text-align:center"><img src="/images/posts/research/gan-packing/mnist_collapse.png.webp" class="center"/></div>
+<p align="center" style="font-size:15px" markdown="1"> <b>Figure 0: A GAN encountering mode collapse (bottom) vs one that is not (top) [Cho18]</b></p>
 
 Several approaches have been proposed to deal with mode collapse. These approaches include label
 smoothing, different loss functions, mixing multiple GANs together and using batch statistics during
@@ -63,7 +63,7 @@ All of the networks use the same generator and discriminator architectures which
 <a name='Table1'></a>
 
 | **Generator** | **Discriminator** |
-|-----------|---------------|
+|:-----------:|:---------------:|
 | $z \in \mathcal{R}^{2} \sim \mathcal{N}(0, \mathcal{I})$ | $x_1, x_2, ... , x_m \in \mathcal{R}^{2}$|
 | $Dense(2 \rightarrow 400)$, BN, ReLU | $Linear(2 \cdot m \rightarrow 200)$, LinearMaxOut(5) |
 | $Dense(400 \rightarrow 400)$, BN, ReLU | $Dense(200 \rightarrow 200)$, LinearMaxOut(5)|
@@ -77,10 +77,12 @@ The discriminator uses LinearMaxout [[Goodfellow13](#Goodfellow13)] with 5 maxou
 
 <a name='Table2'></a>
 
-| lr = 0.0001 |
-| beta1 = 0.8 |
-| beta2 = 0.999|
-| minibatch size = 100 |
+||
+|:-:|
+| Learning Rate = 0.0001 |
+| $\beta_1$ = 0.8 |
+| $\beta_2$ = 0.999|
+| batch size = 100 |
 
 <p align="center" style="font-size:15px"> <b>Table 2: Additonal hyper-parameters</b></p>
 
@@ -94,33 +96,33 @@ The first set of experiments examine the effects of packing on data with differe
 
 <a name='Fig1'></a>
 
-![Figure 1](/assets/0025-fig.png)
+![Figure 1](/images/posts/research/gan-packing/0025-fig.png.webp)
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Figure 1: Samples from a 25 mode distribution with $\Sigma=0.0025 \cdot \mathcal{I}$</b></p>
 
 <a name='Table3'></a>
-<img src="/assets/0025-table.png" alt="drawing" class='center'/>
+<img src="/images/posts/research/gan-packing/0025-table.png.webp" class='center'/>
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Table 3: Results from Figure 1</b></p>
 
 When noise is added to the distribution the severity of mode collapse decreases with the standard GAN, recovering 23 modes when $\Sigma=0.01 \cdot \mathcal{I}$ ([Figure 2](#Fig2) and [Table 4](#Table4)) and all 25 when $\Sigma=0.1 \cdot \mathcal{I}$ ([Figure 3](#Fig3) and [Table 5](#Table5)). Applying noise to the inputs of the discriminator is a technique that has been explored before [[Salimans16](#Salimans16), [Arjovsky17](#Arjovsky17)] and is understood to help smooth the target distribution's probability mass. In our experiments, applying noise increase the area in the data manifold where the training data lies making the discriminator less strict and allowing the generator to explore without being penalized as severely. 
 
 <a name='Fig2'></a>
 
-![Figure 2](/assets/01-fig.png)
+![Figure 2](/images/posts/research/gan-packing/01-fig.png.webp)
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Figure 2: Samples from a 25 mode distribution with $\Sigma=0.01 \cdot \mathcal{I}$</b></p>
 
 <a name='Table4'></a>
 
-<img src="/assets/01-table.png" alt="drawing" class='center'/>
+<img src="/images/posts/research/gan-packing/01-table.png.webp" alt="drawing" class='center'/>
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Table 4: Results from Figure 2</b></p>
 
 <a name='Fig3'></a>
 
-![Figure 3](/assets/1-fig.png)
+![Figure 3](/images/posts/research/gan-packing/1-fig.png.webp)
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Figure 3: Samples from a 25 mode distribution with $\Sigma=0.1 \cdot \mathcal{I}$</b></p>
 
 <a name='Table5'></a>
 
-<img src="/assets/1-table.png" alt="drawing" class='center'/>
+<img src="/images/posts/research/gan-packing/1-table.png.webp" alt="drawing" class='center'/>
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Table 5: Results from Figure 3</b></p>
 
 The other experiments looked at how the complexity of the distribution impacts the effectiveness of
@@ -130,12 +132,12 @@ epochs however when packing with $m=2$ is added, remaining the network quickly d
 
 <a name='Fig4'></a>
 
-![Figure 4](/assets/9modes-fig.png)
+![Figure 4](/images/posts/research/gan-packing/9modes-fig.png.webp)
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Figure 4: Samples from a 9 mode distribution with $\Sigma=0.0025 \cdot \mathcal{I}$</b></p>
 
 <a name='Table6'></a>
 
-<img src="/assets/9modes-table.png" alt="drawing" class='center'/>
+<img src="/images/posts/research/gan-packing/9modes-table.png.webp" alt="drawing" class='center'/>
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Table 6: Results from Figure 4</b></p>
 
 On a high complexity distribution with 81 modes and $\Sigma = 0.0025 \cdot \mathcal{I}$ ([Figure
@@ -144,13 +146,13 @@ packing and packing with $m=2$ discover 59 and 58 modes respectively however we 
 
 <a name='Fig5'></a>
 
-![Figure 5](/assets/81modes-fig.png)
+![Figure 5](/images/posts/research/gan-packing/81modes-fig.png.webp)
 
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Figure 5: Samples from a 81 mode distribution with $\Sigma=0.0025 \cdot \mathcal{I}$</b></p>
 
 <a name='Table7'></a>
 
-<img src="/assets/81modes-table.png" alt="drawing" class='center'/>
+<img src="/images/posts/research/gan-packing/81modes-table.png.webp" alt="drawing" class='center'/>
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Table 7: Results from Figure 5</b></p>
 
 To see if the distances between modes impacts how the network explores the data manifold we perform
@@ -167,12 +169,12 @@ larger distance to its neighbours compared to the rest which caused the network 
 
 <a name='Fig6'></a>
 
-![Figure 6](/assets/rand-fig.png)
+![Figure 6](/images/posts/research/gan-packing/rand-fig.png.webp)
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Figure 6: Samples from a 23 randomly spaced mode distribution with $\Sigma=0.0025 \cdot \mathcal{I}$</b></p>
 
 <a name='Table8'></a>
 
-<img src="/assets/rand-table-new.png" alt="drawing" class='center'/>
+<img src="/images/posts/research/gan-packing/rand-table-new.png.webp" alt="drawing" class='center'/>
 <p align="center" style="padding-top: 0px; font-size:15px" > <b>Table 8: Results from Figure 6</b></p>
 
 Across all experiments, a couple of trends can be seen about packing:
