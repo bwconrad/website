@@ -5,7 +5,7 @@ date = "2023-06-12T00:00:00-00:00"
 tags = ["training",]
 +++
 
-# Training Log Entry 2: June 5-11, 2023
+# Training Log Entry 2: June 5 - 11, 2023
 
 Time for the second week of the training log.
 After bringing up my mileage this past week with mostly easy runs, the plan for this week is to maintain the mileage in the low 60s while adding back one workout.
@@ -73,7 +73,7 @@ The worst air quality lately may be causing the discomfort.
 Because of this, I took an extra 60s break after the 3rd rep to catch my breath.
 
 In the end, the paces were really good with the on’s averaging at 4:02/k and the floats at 4:34/k.
-To compare, in the last farket workout of 10x(1’ on, 1’ float), I averaged 4:09/k and 4:36/k for the on’s and floats respectively.
+To compare, in the last farklet workout of 10x(1’ on, 1’ float), I averaged 4:09/k and 4:36/k for the on’s and floats respectively.
 I would definitely contribute the speed up to the shoes since I really didn’t feel that great during the workout.
 
 ## Saturday June 10

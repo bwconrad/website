@@ -6,7 +6,7 @@ tags = ["training",]
 +++
 
 
-# Training Log Entry 3: June 12-18, 2023
+# Training Log Entry 3: June 12 - 18, 2023
 
 This will be hopeful be the last week of a short 3 week transition back into my regular training schedule.
 After bringing back one workout last week, the goal for this week is to have two workouts, on Wednesday and Friday, and keep the mileage in the low 60s.
