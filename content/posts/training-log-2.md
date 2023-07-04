@@ -73,7 +73,7 @@ The worst air quality lately may be causing the discomfort.
 Because of this, I took an extra 60s break after the 3rd rep to catch my breath.
 
 In the end, the paces were really good with the on’s averaging at 4:02/k and the floats at 4:34/k.
-To compare, in the last farklet workout of 10x(1’ on, 1’ float), I averaged 4:09/k and 4:36/k for the on’s and floats respectively.
+To compare, in the last fartlet workout of 10x(1’ on, 1’ float), I averaged 4:09/k and 4:36/k for the on’s and floats respectively.
 I would definitely contribute the speed up to the shoes since I really didn’t feel that great during the workout.
 
 ## Saturday June 10

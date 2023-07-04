@@ -31,7 +31,7 @@ I ended at 8.5km and was planning to do some strides afterwards, but considering
 <div style="text-align:center"><img src="/images/posts/training/2023/4/2.png.webp" /></div>
 
 The weather was extremely nice this day.
-I started in Mahone Bay and ran my farklet workout on the Bay-to-Bay trail.
+I started in Mahone Bay and ran my fartlet workout on the Bay-to-Bay trail.
 The workout consisted of 6x(2' on, 2' float).
 
 Overall, it went pretty well.
