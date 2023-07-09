@@ -1,6 +1,6 @@
 +++
 title = "Training Log Entry 6"
-date = "2023-07-04T00:00:00-00:00"
+date = "2023-07-10T00:00:00-00:00"
 # description = "An optional description for SEO. If not provided, an automatically created summary will be used."
 tags = ["training",]
 +++
