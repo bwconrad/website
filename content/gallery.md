@@ -32,6 +32,8 @@ rss_ignore = true
       "imageTransition": "swipe2"
     }'
   >
+      <a href="/images/gallery/2023/24.jpg.webp" data-ngthumb="/images/gallery/thumb/2023/24.jpg.webp">title 9</a>
+      <a href="/images/gallery/2023/25.jpg.webp" data-ngthumb="/images/gallery/thumb/2023/25.jpg.webp">title 9</a>
       <a href="/images/gallery/2023/9.jpg.webp" data-ngthumb="/images/gallery/thumb/2023/9.jpg.webp">title 9</a>
       <a href="/images/gallery/2023/8.jpg.webp" data-ngthumb="/images/gallery/thumb/2023/8.jpg.webp">title 8</a>
       <a href="/images/gallery/2023/7.jpg.webp" data-ngthumb="/images/gallery/thumb/2023/7.jpg.webp">title 7</a>
