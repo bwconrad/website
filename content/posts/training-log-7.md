@@ -5,7 +5,7 @@ date = "2023-07-17T00:00:00-00:00"
 +++
 
 
-# Training Log Entry 6:  July 10 - 16, 2023
+# Training Log Entry 7:  July 10 - 16, 2023
 
 ## Monday July 10
 
