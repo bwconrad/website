@@ -15,6 +15,10 @@ rss_ignore = true
 
 <div id="nanogallery2"
     data-nanogallery2 = '{ 
+"viewerTools":     {
+        "topLeft":    "pageCounter",
+        "topRight":   "fullscreenButton, downloadButton, closeButton"
+      },
       "thumbnailWidth":   "auto",
   	  "thumbnailHeight":  400,
       "thumbnailLabel":     { "display": false },
@@ -32,6 +36,8 @@ rss_ignore = true
       "imageTransition": "swipe2"
     }'
   >
+      <a href="/images/gallery/2023/44.jpg.webp" data-ngthumb="/images/gallery/2023/44-thumb.jpg.webp"></a>
+      <a href="/images/gallery/2023/43.jpg.webp" data-ngthumb="/images/gallery/2023/43-thumb.jpg.webp"></a>
       <a href="/images/gallery/2023/42.jpg.webp" data-ngthumb="/images/gallery/2023/42-thumb.jpg.webp"></a>
       <a href="/images/gallery/2023/41.jpg.webp" data-ngthumb="/images/gallery/2023/41-thumb.jpg.webp"></a>
       <a href="/images/gallery/2023/40.jpg.webp" data-ngthumb="/images/gallery/2023/40-thumb.jpg.webp"></a>
