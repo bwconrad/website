@@ -99,7 +99,7 @@ Including the warm-up and cool-down, the total volume for the day amounted to 12
 
 I woke up to my foot aching quite a lot, so I decided to take the remainder of the week off and reevaluate next week.
 
-## Sunday January 31
+## Sunday January 7
 
 Off
 
