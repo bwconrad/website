@@ -1,6 +1,5 @@
 <style>
     html {
-
         background-color: #F7F5EB;
     }
 
@@ -136,6 +135,116 @@
         color: #8b6fcb;
     }
 
+    .landscape {
+        text-align: center
+    }
+
+    .portrait {
+        text-align: center;
+    }
+
+    .portrait img {
+        height: 700px;
+    }
+
+    /* Summary cards */
+    .card {
+        border: 3px solid #444;
+        padding-left: 10px;
+        margin-top: 0px;
+        border-radius: 10px;
+        color: #222;
+    }
+
+    .card h2 {
+        margin-top: 10px;
+    }
+
+    .card .title {
+        margin-top: 15px;
+    }
+
+    .card .title-workout {
+        display: inline-block;
+        margin-top: 15px;
+        margin-left: 1rem;
+        margin-bottom: 0px;
+    }
+
+    .card .sub-title-workout {
+        display: inline-block;
+        font-size: 18px;
+        font-style: italic;
+        margin-left: 6px;
+        margin-bottom: 0px;
+    }
+
+    .card .wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .card .column {
+        width: 30%;
+        margin-left: 1rem;
+        margin-bottom: -15px;
+    }
+
+    .card .label {
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+
+    .card .value {
+        font-size: 22px;
+        margin-top: 0px;
+    }
+
+    /* Small summary card */
+    .card-small {
+        border: 3px solid #444;
+        margin-top: 0px;
+        border-radius: 10px;
+        width: 55%;
+        text-align: center;
+        margin: auto;
+        color: #222;
+    }
+
+    .card-small .title {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .card-small .wrapper {
+        display: flex;
+        justify-content: center;
+        margin-left: -50px;
+        margin-right: -50px;
+    }
+
+    .card-small .column {
+        width: 20%;
+        margin-bottom: -15px;
+    }
+
+    .card-small .column-title {
+        width: 40%;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .card-small .label {
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+
+    .card-small .value {
+        font-size: 22px;
+        margin-top: 0px;
+    }
+
+    /* Dark mode */
     @media (prefers-color-scheme: dark) {
         html {
             background-color: #181a1b;
@@ -185,8 +294,15 @@
         .helptext {
             color: #aaa;
         }
+
+        .card,
+        .card-small {
+            border: 3px solid #ddd;
+            color: #ddd;
+        }
     }
 
+    /* Portrait display */
     @media screen and (max-device-width: 833px) {
         header {
             overflow: hidden;

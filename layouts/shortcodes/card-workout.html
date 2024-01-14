@@ -1,0 +1,23 @@
+<!-- Workout summary card -->
+<div class="card">
+    <h2 class="title-workout">{{ .Get 0 }}</h2>
+    <p class="sub-title-workout">{{ .Get 1}}</p>
+    <div class="wrapper">
+        <div class="column">
+            <h2 class="label">Distance</h2>
+            <p class="value">{{ .Get 2 }}</p>
+        </div>
+        <div class="column">
+            <h2 class="label">Time</h2>
+            <p class="value">{{ .Get 3 }}</p>
+        </div>
+        <div class="column">
+            <h2 class="label">Avg Pace</h2>
+            <p class="value">{{ .Get 4 }}</p>
+        </div>
+        <div class="column">
+            <h2 class="label">Elev Gain</h2>
+            <p class="value">{{ .Get 5 }}</p>
+        </div>
+    </div>
+</div>

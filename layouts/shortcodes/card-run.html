@@ -1,0 +1,24 @@
+<!-- Run summary card -->
+<div class="card">
+    <div class="wrapper">
+        <div class="column">
+            <h2 class="title">{{ .Get 0 }}</h2>
+        </div>
+        <div class="column">
+            <h2 class="label">Distance</h2>
+            <p class="value">{{ .Get 1 }}</p>
+        </div>
+        <div class="column">
+            <h2 class="label">Time</h2>
+            <p class="value">{{ .Get 2 }}</p>
+        </div>
+        <div class="column">
+            <h2 class="label">Avg Pace</h2>
+            <p class="value">{{ .Get 3 }}</p>
+        </div>
+        <div class="column">
+            <h2 class="label">Elev Gain</h2>
+            <p class="value">{{ .Get 4 }}</p>
+        </div>
+    </div>
+</div>
