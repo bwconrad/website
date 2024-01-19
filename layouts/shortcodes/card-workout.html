@@ -1,23 +1,160 @@
-<!-- Workout summary card -->
-<div class="card">
-    <h2 class="title-workout">{{ .Get 0 }}</h2>
-    <p class="sub-title-workout">{{ .Get 1}}</p>
-    <div class="wrapper">
-        <div class="column">
-            <h2 class="label">Distance</h2>
-            <p class="value">{{ .Get 2 }}</p>
+<!-- Workout summary card-workout -->
+<style>
+    /* Small mobile */
+    @media screen and (max-device-width: 430px) {
+        .show-mobile {
+            display: block;
+        }
+
+        .hide-mobile {
+            display: none;
+        }
+
+        .card-workout .column {
+            margin-left: 0px;
+            margin-top: 0px;
+        }
+
+        .card-workout .value {
+            font-size: 18px;
+            margin-top: 0px;
+            margin-bottom: 25px;
+        }
+
+        .card-workout .title {
+            margin-left: 2px;
+            margin-top: 5px;
+        }
+
+        .card-workout .subtitle {
+            margin-left: 2px;
+            margin-top: 5px;
+        }
+    }
+
+    /* Desktop */
+    @media screen and (min-device-width: 431px) {
+        .show-mobile {
+            display: none;
+        }
+
+        .hide-mobile {
+            display: block;
+        }
+
+        .card-workout .column {
+            margin-left: 16px;
+        }
+
+        .card-workout .value {
+            font-size: 22px;
+            margin-top: 0px;
+        }
+
+        .card-workout .title {
+            margin-left: 16px;
+            margin-top: 5px;
+        }
+
+        .card-workout .subtitle {
+            margin-left: 6px;
+            margin-top: 5px;
+        }
+    }
+
+    .card-workout {
+        border: 3px solid #444;
+        padding-left: 10px;
+        margin-top: 0px;
+        border-radius: 10px;
+        color: #222;
+    }
+
+    .card-workout .title {
+        display: inline-block;
+        margin-bottom: 0px;
+    }
+
+    .card-workout .subtitle {
+        display: inline-block;
+        font-size: 18px;
+        font-style: italic;
+        margin-bottom: 0px;
+    }
+
+    .card-workout .wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .card-workout .column {
+        width: 25%;
+        margin-bottom: -15px;
+    }
+
+    .card-workout .label {
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+        .card-workout {
+            border: 3px solid #ddd;
+            color: #ddd;
+        }
+    }
+</style>
+
+
+<!-- Desktop view -->
+<div class="hide-mobile">
+    <div class="card-workout">
+        <h2 class="title">{{ .Get 0 }}</h2>
+        <p class="subtitle">{{ .Get 1}}</p>
+        <div class="wrapper">
+            <div class="column">
+                <h2 class="label">Distance</h2>
+                <p class="value">{{ .Get 2 }}</p>
+            </div>
+            <div class="column">
+                <h2 class="label">Time</h2>
+                <p class="value">{{ .Get 3 }}</p>
+            </div>
+            <div class="column">
+                <h2 class="label">Avg Pace</h2>
+                <p class="value">{{ .Get 4 }}</p>
+            </div>
+            <div class="column">
+                <h2 class="label">Elev Gain</h2>
+                <p class="value">{{ .Get 5 }}</p>
+            </div>
         </div>
-        <div class="column">
-            <h2 class="label">Time</h2>
-            <p class="value">{{ .Get 3 }}</p>
-        </div>
-        <div class="column">
-            <h2 class="label">Avg Pace</h2>
-            <p class="value">{{ .Get 4 }}</p>
-        </div>
-        <div class="column">
-            <h2 class="label">Elev Gain</h2>
-            <p class="value">{{ .Get 5 }}</p>
+    </div>
+</div>
+
+
+<div class="show-mobile">
+    <div class="card-workout">
+        <h2 class="title">{{ .Get 0 }}</h2>
+        <p class="subtitle">{{ .Get 1}}</p>
+        <div class="wrapper">
+            <div class="column">
+                <h2 class="label">Distance</h2>
+                <p class="value">{{ .Get 2 }}</p>
+            </div>
+            <div class="column">
+                <h2 class="label">Time</h2>
+                <p class="value">{{ .Get 3 }}</p>
+            </div>
+            <div class="column">
+                <h2 class="label">Avg Pace</h2>
+                <p class="value">{{ .Get 4 }}</p>
+            </div>
+            <div class="column">
+                <h2 class="label">Elev Gain</h2>
+                <p class="value">{{ .Get 5 }}</p>
+            </div>
         </div>
     </div>
 </div>
