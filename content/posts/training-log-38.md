@@ -54,7 +54,7 @@ Overall, I didn't feel particularly great during the run, with my hips feeling q
 Despite this, I was able to cover 6.2km and found a promising bike path suitable for threshold repeats.
 
 
-## Sunday February 18
+## Sunday March 3
 
 {{% card-run "Long Run" "16.0km" "1:11:46" "4:29/km" "36m" %}}
 
