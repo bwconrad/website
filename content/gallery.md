@@ -36,6 +36,7 @@ rss_ignore = true
       "imageTransition": "swipe2"
     }'
   >
+      <a href="/images/gallery/2024/16.jpg.webp" data-ngthumb="/images/gallery/2024/16-thumb.jpg.webp"></a>
       <a href="/images/gallery/2024/15.jpg.webp" data-ngthumb="/images/gallery/2024/15-thumb.jpg.webp"></a>
       <a href="/images/gallery/2024/14.jpg.webp" data-ngthumb="/images/gallery/2024/14-thumb.jpg.webp"></a>
       <a href="/images/gallery/2024/13.jpg.webp" data-ngthumb="/images/gallery/2024/13-thumb.jpg.webp"></a>
