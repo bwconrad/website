@@ -1,6 +1,6 @@
 +++
 title = "Training Log Entry 40"
-date = "2024-04-01T00:00:00-00:00"
+date = "2024-04-02T00:00:00-00:00"
 # description = ""
 tags = ["training"]
 +++
