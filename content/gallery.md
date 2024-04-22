@@ -36,6 +36,8 @@ rss_ignore = true
       "imageTransition": "swipe2"
     }'
   >
+      <a href="/images/gallery/2024/24.jpg.webp" data-ngthumb="/images/gallery/2024/24-thumb.jpg.webp"></a>
+      <a href="/images/gallery/2024/23.jpg.webp" data-ngthumb="/images/gallery/2024/23-thumb.jpg.webp"></a>
       <a href="/images/gallery/2024/22.jpg.webp" data-ngthumb="/images/gallery/2024/22-thumb.jpg.webp"></a>
       <a href="/images/gallery/2024/21.jpg.webp" data-ngthumb="/images/gallery/2024/21-thumb.jpg.webp"></a>
       <a href="/images/gallery/2024/20.jpg.webp" data-ngthumb="/images/gallery/2024/20-thumb.jpg.webp"></a>
