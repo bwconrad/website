@@ -36,6 +36,10 @@ rss_ignore = true
       "imageTransition": "swipe2"
     }'
   >
+      <a href="/images/gallery/2024/28.jpg.webp" data-ngthumb="/images/gallery/2024/28-thumb.jpg.webp"></a>
+      <a href="/images/gallery/2024/27.jpg.webp" data-ngthumb="/images/gallery/2024/27-thumb.jpg.webp"></a>
+      <a href="/images/gallery/2024/26.jpg.webp" data-ngthumb="/images/gallery/2024/26-thumb.jpg.webp"></a>
+      <a href="/images/gallery/2024/25.jpg.webp" data-ngthumb="/images/gallery/2024/25-thumb.jpg.webp"></a>
       <a href="/images/gallery/2024/24.jpg.webp" data-ngthumb="/images/gallery/2024/24-thumb.jpg.webp"></a>
       <a href="/images/gallery/2024/23.jpg.webp" data-ngthumb="/images/gallery/2024/23-thumb.jpg.webp"></a>
       <a href="/images/gallery/2024/22.jpg.webp" data-ngthumb="/images/gallery/2024/22-thumb.jpg.webp"></a>
