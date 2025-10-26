@@ -4,6 +4,7 @@ menu = "main"
 rss_ignore = true
 +++
 
+Currently a deep learning researcher at [Picovoice](https://picovoice.ai/). Working on speech recognition.
+
 - <a href="https://github.com/bwconrad/"> {{% icon github %}} Github - bwconrad </a>
-- <a href="mailto:benwconrad@proton.me"> {{% icon mail %}} Email - bwconrad@proton.me </a>
-- <a href="/cv-ben-conrad-23.pdf"> {{% icon user %}} CV</a>
+- <a href="mailto:contact@bwconrad.com"> {{% icon mail %}} Email - contact@bwconrad.com </a>
